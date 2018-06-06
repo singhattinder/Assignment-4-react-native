@@ -14,6 +14,7 @@ import {ScreenB} from "./elements/ScreenB";
 import {ScreenX} from "./elements/ScreenX";
 import {CourseList} from "./components/CourseList";
 import {ModuleList} from "./components/ModuleList";
+import {LessonList} from "./components/LessonList";
 import {Button} from 'react-native-elements';
 
 
@@ -45,7 +46,8 @@ class Home extends Component{
 const App = createStackNavigator({
     Home,
     CourseList,
-    ModuleList
+    ModuleList,
+    LessonList
 });
 
 export default App;
