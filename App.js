@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { StyleSheet, ScrollView, StatusBar, View } from 'react-native';
 import {FixedHeader} from './elements/FixedHeader';
 import {Text} from 'react-native-elements';
@@ -9,17 +9,43 @@ import {QuestionTypeButtonGroupChooser} from "./elements/QuestionTypeButtonGroup
 import {QuestionTypePicker} from "./elements/QuestionTypePicker";
 import {TrueFalseQuestionEditor} from './elements/TrueFalseQuestionEditor';
 import { createStackNavigator } from 'react-navigation';
-import {Home} from './elements/Home';
 import {ScreenA} from "./elements/ScreenA";
 import {ScreenB} from "./elements/ScreenB";
 import {ScreenX} from "./elements/ScreenX";
+import {CourseList} from "./components/CourseList";
+import {ModuleList} from "./components/ModuleList";
+import {Button} from 'react-native-elements';
 
+
+
+
+class Home extends Component{
+
+    static navigationOptions = { title: 'Home' };
+
+    constructor(props) {
+        super(props);
+    }
+
+
+    render() {
+        return (
+            <ScrollView>
+                <StatusBar barStyle="light-content"/>
+                <FixedHeader/>
+                <Button title="Courses"
+                        onPress={() => this.props.navigation
+                            .navigate('CourseList') } />
+            </ScrollView>
+
+        );
+    }
+}
 
 const App = createStackNavigator({
     Home,
-    ScreenA,
-    ScreenB,
-    ScreenX
+    CourseList,
+    ModuleList
 });
 
 export default App;
