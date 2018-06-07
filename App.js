@@ -19,7 +19,8 @@ import {LessonList} from "./components/LessonList";
 import {Button} from 'react-native-elements';
 import {WidgetList} from "./components/WidgetList";
 import {QuestionList} from "./components/QuestionList";
-import {ExamPicker} from "./elements/ExamPicker";
+import {FillInTheBlanksQuestionEditor} from "./elements/FillInTheBlanksQuestionEditor";
+import {EssayQuestionEditor} from "./elements/EssayQuestionEditor";
 
 
 class Home extends Component{
@@ -54,7 +55,9 @@ const App = createStackNavigator({
     QuestionList,
     TrueFalseQuestionEditor,
     MultipleChoiceQuestionEditor,
-    ExamPicker
+    FillInTheBlanksQuestionEditor,
+    EssayQuestionEditor
+
 });
 
 export default App;

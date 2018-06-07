@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {View, Alert , Picker, Button} from 'react-native'
 import {Text, ListItem, } from 'react-native-elements'
+import {QuestionList} from "./QuestionList";
 
 export class WidgetList extends Component {
     static navigationOptions = {title: 'Widgets'}
@@ -29,9 +30,9 @@ export class WidgetList extends Component {
         let widget = {
 
             widgetType:type,
-            text:'Dummy text',
-            description:'dummy desc',
-            title:'dymmu title'
+            text:'Exam',
+            description:'Exam 2',
+            title:'Exam Title'
 
         };
         const {navigation} = this.props;
@@ -76,12 +77,9 @@ export class WidgetList extends Component {
                     (widget, index) => (
                         <ListItem
                             onPress={() => {
-
                                 if(widget.widgetType === 'Exam')
-
                                 this.props.navigation
-                                .navigate("ExamPicker", {examId: widget.id})
-
+                                .navigate("QuestionList", {widgetId: widget.id})
                             }}
                             key={index}
                             subtitle={widget.description}
