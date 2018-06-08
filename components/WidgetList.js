@@ -80,6 +80,10 @@ export class WidgetList extends Component {
                                 if(widget.widgetType === 'Exam')
                                 this.props.navigation
                                 .navigate("QuestionList", {widgetId: widget.id})
+
+                                if(widget.widgetType === 'Assignment')
+                                    this.props.navigation
+                                        .navigate("AssignmentEditor", {widgetId: widget.id})
                             }}
                             key={index}
                             subtitle={widget.description}

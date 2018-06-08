@@ -21,6 +21,7 @@ import {WidgetList} from "./components/WidgetList";
 import {QuestionList} from "./components/QuestionList";
 import {FillInTheBlanksQuestionEditor} from "./elements/FillInTheBlanksQuestionEditor";
 import {EssayQuestionEditor} from "./elements/EssayQuestionEditor";
+import {AssignmentEditor} from './elements/AssignmentEditor'
 
 
 class Home extends Component{
@@ -56,7 +57,8 @@ const App = createStackNavigator({
     TrueFalseQuestionEditor,
     MultipleChoiceQuestionEditor,
     FillInTheBlanksQuestionEditor,
-    EssayQuestionEditor
+    EssayQuestionEditor,
+    AssignmentEditor
 
 });
 
