@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {FormLabel, FormInput, FormValidationMessage, Text, Button, CheckBox} from 'react-native-elements';
-import {Alert, View} from 'react-native';
+import {Alert, StyleSheet, View, TextInput} from 'react-native';
 
 
 
@@ -9,8 +9,8 @@ export class EssayQuestionEditor extends Component{
     constructor(props) {
         super(props);
 
-        this.state = ({title:'',
-            description:'',
+        this.state = ({title:'Essay question title',
+            description:'description of the question',
             points:0,
             isTrue:true
         })
@@ -23,43 +23,37 @@ export class EssayQuestionEditor extends Component{
 
 
     render() {
+
+        const {goBack} = this.props.navigation;
         return (
 
             <View>
-                <Text h3>Editor</Text>
-                <FormLabel>Title</FormLabel>
-                <FormInput onChangeText={
-                    text => this.updateForm({title: text}) }/>
-                <FormValidationMessage>
-                    Title is required
-                </FormValidationMessage>
-
-                <FormLabel>Description</FormLabel>
-                <FormInput onChangeText={
-                    text => this.updateForm({description: text}) }/>
-                <FormValidationMessage>
-                    Description is required
-                </FormValidationMessage>
+                <Text h4>{this.state.title}</Text>
+                <View style={styles.textContainer} >
+                    <Text h4>{this.state.description}</Text>
+                    <TextInput
+                        style={styles.text}
+                        underlineColorAndroid="transparent"
+                        placeholder={"Type something"}
+                        placeholderTextColor={"grey"}
+                        numberOfLines={10}
+                        multiline={true}
+                    />
+                </View>
 
 
 
 
-                <CheckBox title='The answer is true'
-                          onPress={() => this.updateForm
-                          ({isTrue: !this.state.isTrue})}
-                          checked={this.state.isTrue}/>
 
-                <Button	backgroundColor="green"
+                <Button	backgroundColor="blue"
                            color="white"
                            title="Save"/>
                 <Button	backgroundColor="red"
                            color="white"
-                           title="Cancel"/>
+                           title="Cancel"
+                           onPress={() => goBack()}/>
 
 
-                <Text h3>Preview</Text>
-                <Text h2>{this.state.title}</Text>
-                <Text h5 >{this.state.description}</Text>
             </View>
 
         );
@@ -67,3 +61,23 @@ export class EssayQuestionEditor extends Component{
 
 
 }
+
+const styles = StyleSheet.create({
+    textContainer: {
+        borderColor: '#D3D3D3',
+        borderWidth: 1,
+        padding: 5
+    },
+    text: {
+        height: 150,
+        justifyContent: "flex-start"
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+
+
+});

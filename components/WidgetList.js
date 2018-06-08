@@ -87,7 +87,7 @@ export class WidgetList extends Component {
                             }}
                             key={index}
                             subtitle={widget.description}
-                            title={widget.title}/>))}
+                            title={widget.widgetType}/>))}
             </View>
 
 

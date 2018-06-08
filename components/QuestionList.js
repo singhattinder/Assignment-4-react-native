@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Alert} from 'react-native'
+import {View, Alert, Picker, Button} from 'react-native'
 import {Text, ListItem} from 'react-native-elements'
 
 export class QuestionList extends Component {
@@ -14,9 +14,19 @@ export class QuestionList extends Component {
                 {id:'422',title: 'Question 3', type:'ES', subtitle: 'Essay'},
                 {id:'432',title: 'Question 4', type:'FB', subtitle: 'FillInTheBlanks'}
             ],
+            type:'TF',
             examId: 1
         }
+        this.createQuestion = this.createQuestion.bind(this);
     }
+
+
+    createQuestion(type){
+        Alert.alert(type);
+
+    }
+
+
     // componentDidMount() {
     //     const {navigation} = this.props;
     //     const examId = navigation.getParam("examId")
@@ -30,8 +40,21 @@ export class QuestionList extends Component {
             <View>
 
 
+                <Picker
+                    selectedValue = {this.state.type}
+                    onValueChange = {(itemValue, itemIndex) => this.setState({type: itemValue})}>
+                    <Picker.Item value="TF" label="True False" />
+                    <Picker.Item value="MC" label="Multiple Choice" />
+                    <Picker.Item value="ES" label="Essay" />
+                    <Picker.Item value="FB" label="Fill in the blanks" />
+                </Picker>
 
-            <View style={{padding: 15}}>
+                <Button onPress={() => this.createQuestion(this.state.type)} title='Add Question'/>
+
+
+
+
+                <View style={{padding: 15}}>
                 {this.state.questions.map(
                     (question, index) => (
                         <ListItem

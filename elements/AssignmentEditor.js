@@ -13,7 +13,7 @@ export class AssignmentEditor extends Component{
         let result = await DocumentPicker.getDocumentAsync({});
         alert(result.uri);
         console.log(result);
-    }
+    };
 
 
     constructor(props) {
@@ -52,31 +52,34 @@ export class AssignmentEditor extends Component{
                     />
                 </View>
 
+                <FormLabel>Submit a link</FormLabel>
+                <FormInput onChangeText={
+                    text => this.updateForm({title: text}) }/>
+                <FormValidationMessage>
+                    Title is required
+                </FormValidationMessage>
 
-                <FormLabel h4>Upload a file</FormLabel>
-                <View >
+
+                <View style={{
+                    justifyContent: 'space-between',
+                }}>
+                    <FormLabel h4>Upload a file</FormLabel>
 
                     <Button
                         title="Select Document"
                         onPress={this._pickDocument}
                     />
-                </View>
-
-
 
 
                     <Button	backgroundColor="blue"
-                           color="white"
-                           title="Save"/>
-                <Button	backgroundColor="red"
-                           color="white"
-                           title="Cancel"
-                           onPress={() => goBack()}/>
+                               color="white"
+                               title="Save"/>
+                    <Button	backgroundColor="red"
+                               color="white"
+                               title="Cancel"
+                               onPress={() => goBack()}/>
+                </View>
 
-
-                <Text h3>Preview</Text>
-                <Text h2>{this.state.title}</Text>
-                <Text h5 >{this.state.description}</Text>
             </View>
 
         );

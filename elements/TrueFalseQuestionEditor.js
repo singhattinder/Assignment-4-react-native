@@ -9,8 +9,8 @@ export class TrueFalseQuestionEditor extends Component{
     constructor(props) {
         super(props);
 
-        this.state = ({title:'',
-        description:'',
+        this.state = ({title:'question title',
+        description:'question description',
         points:0,
             isTrue:true
         })
@@ -23,43 +23,27 @@ export class TrueFalseQuestionEditor extends Component{
 
 
     render() {
+        const {goBack} = this.props.navigation;
         return (
 
             <View>
-                <Text h3>Editor</Text>
-                <FormLabel>Title</FormLabel>
-                <FormInput onChangeText={
-                    text => this.updateForm({title: text}) }/>
-                <FormValidationMessage>
-                    Title is required
-                </FormValidationMessage>
-
-                <FormLabel>Description</FormLabel>
-                <FormInput onChangeText={
-                    text => this.updateForm({description: text}) }/>
-                <FormValidationMessage>
-                    Description is required
-                </FormValidationMessage>
+                <Text h2>True False Question</Text>
+                <Text h2>{this.state.title}</Text>
+                <Text h5 >{this.state.description}</Text>
 
 
-
-
-                <CheckBox title='The answer is true'
-                          onPress={() => this.updateForm
-                          ({isTrue: !this.state.isTrue})}
+                <CheckBox title='Answer'
+                          onPress={() => this.setState({isTrue: !this.state.isTrue})}
                           checked={this.state.isTrue}/>
 
-                <Button	backgroundColor="green"
+                <Button	backgroundColor="blue"
                            color="white"
                            title="Save"/>
                 <Button	backgroundColor="red"
                            color="white"
-                           title="Cancel"/>
+                           title="Cancel"
+                           onPress={() => goBack()}/>
 
-
-                <Text h3>Preview</Text>
-                <Text h2>{this.state.title}</Text>
-                <Text h5 >{this.state.description}</Text>
             </View>
 
         );
